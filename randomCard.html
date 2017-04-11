@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>抽卡游戏</title>
+		<style type="text/css">
+			.bShown{
+				border:1px solid;
+				border-radius: 10px;
+				width: 200px;
+				height: auto;
+				padding: 20px;
+				margin: 20px;
+			}
+			button{
+				background: none;
+				padding: 10px;
+				border: 1px solid;
+				border-radius: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<table border="0" cellspacing="" cellpadding="">
+			<tr>
+				<td><div id="dis" class="bShown"></div></td>
+				<td>
+					<input type="text" name="num" id="num" value="1" />
+					<button id="btn">抽卡</button>
+				</td>
+			</tr>
+			<tr>
+				<td><div id="dis-ST" class="bShown"></div></td>
+				<td>
+					<input type="text" name="num" id="num-ST" value="1" />
+					<button id="btn-ST">抽卡 - Special Turn</button>
+				</td>
+			</tr>
+			<tr>
+				<td><div id="dis-stone" class="bShown"></div></td>
+				<td><button id="btn-stone">强化石</button></td>
+			</tr>
+		</table>
+
+	</body>
+	<script type="text/javascript">
+		//普通抽卡：
+		document.getElementById("btn").onclick = function() {
+			var vdis = document.getElementById("dis");
+			vdis.innerText = "";
+			var vnum = Number(document.getElementById("num").value);
+			for(var i = 0; i < vnum; ++i) {
+				vdis.innerText += Math.floor(Math.random() * 1000) + "\n";
+			}
+		};
+		//特殊抽卡：
+		document.getElementById("btn-ST").onclick = function() {
+			var vdis = document.getElementById("dis-ST");
+			vdis.innerText = "";
+			var vnum = Number(document.getElementById("num-ST").value);
+			for(var i = 0; i < vnum; ++i) {
+				vdis.innerText += Math.floor(Math.random() * 200 + 800) + "\n";
+			}
+		};
+		//强化石：
+		document.getElementById("btn-stone").onclick = function(){
+			var vdis = document.getElementById("dis-stone");
+			vdis.innerText = "";
+			for(var i = 0; i < 5; ++i) {
+				vdis.innerText += Math.floor(Math.random() * 10.5)+(i+4)*10 + "\n";
+			}
+		};
+	</script>
+
+</html>
